@@ -22,4 +22,6 @@ urlpatterns = [
     url(r'^$', views.index,name='index'),
     url(r'^Moddle/',include('Moddle.urls')),
     path('admin/', admin.site.urls),
+    url(r'^form_page/', views.form_name_view,name='form_name'),
+    url(r'users/', include('users.urls'))
 ]

@@ -1,0 +1,57 @@
+#logo{
+    height: 70px;
+    margin-left: 20%;
+}
+#collapsibleNavId{
+    margin-left: 70%;
+}
+#navbar{
+    background-color: white !important;
+}
+
+#card-login-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F7F7F7;
+}
+#loginmenu{
+    margin-top: 5%;
+    width: 50%;
+}
+#card-login-body{
+    background-color: white;
+}
+#login-form{
+    margin-left: 10%;
+    margin-top: 4%;
+}
+#username-input{
+    width: 40%;
+    margin-right: 10%;
+    background-color: #E8F0FE;
+    border: none;
+    padding: 1%;
+    margin-bottom: 2%;
+}
+#password-input{
+    width: 40%;
+    margin-right: 10%;
+    background-color: #E8F0FE;
+    border: none;
+    padding: 1%;
+    margin-bottom: 2%
+}
+#forgot-password{
+    color: #FF6600;
+    margin-left: 20%;
+}
+
+#loginButton{
+    margin-top: 2%;
+    width: 40%;
+    padding: 1%;
+    background-color: #4682B4;
+    color: white;
+    font-weight: bold;
+}

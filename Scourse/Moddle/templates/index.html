@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Moddle</title>
-  </head>
-  <body>
-    <h1>Welcome to Moddle !</h1>
-    <div class="container">
-      <p><strong><i>This website is updating<br>If you have any problem, please contact us</i></strong></p>
-      <p>Name: {{ name }}</p>
-      <p>Email: {{ email }}</p>
-      <p>Thanks for your response!</p>
-    </div>
-    {{ insert_me }}
+{% extends "base.html" %}
 
-  </body>
-</html>
+{% block page_header %}
+	<div class="jumbotron">
+		<h1 class="display-3">Track your learning.</h1>
+		<p class="lead">Join us and learn new things from out website</p>
+		<a class="btn btn-lg btn-primary" href="{%  url 'users:register' %}" role="button">Register &raquo;</a>
+	</div>
+{% endblock page_header %}

@@ -10,6 +10,7 @@ class student(models.Model):
     address = models.CharField(max_length=200)
     phone = models.CharField(max_length=15)
     email = models.EmailField()
+    # profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
     Organization = models.CharField(max_length=200)
 
     def __str__(self):

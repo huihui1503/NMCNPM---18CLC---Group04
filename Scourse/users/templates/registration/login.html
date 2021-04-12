@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% block content %}
+<div class="container" id = "loginmenu">
+		<div class="card">
+				<div class="card-body" id="card-login-header">
+						<img src="{% static 'images/logo.png' %}" alt="">
+				</div>
+
+				<div class="card-footer" id="card-login-body">
+					<form method="post" action="{% url 'users:login' %}" class="form">
+						{% csrf_token %}
+
+						<div class="mb-3">
+						      <label for="username" class="form-label">UserName</label>
+						      <input type="text" class="form-control" id="username" name='username'>
+						 </div>
+
+						  <div class="mb-3">
+						    <label for="password" class="form-label">Password</label>
+						    <input type="password" class="form-control" id="password" name='password'>
+							</div>
+
+							<div class="mb-3 form-check">
+						    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						    <label class="form-check-label" for="exampleCheck1">Keep me login</label>
+								<a href="#" id="forgot-password">Forgotten your username or password?</a>
+						  </div>
+							{% buttons %}
+								<button name="submit" class="btn btn-primary">Sign In</button>
+							{% endbuttons %}
+							<input type="hidden" name="next" value="{% url 'Moddle:index' %}"/>
+						</form>
+				</div>
+		</div>
+</div>
+{% endblock content %}
