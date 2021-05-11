@@ -22,6 +22,10 @@ def student(request):
 
 def teacher(request):
     return render(request, 'lecturer_home.html')
+def teacher_info(request):
+    my_dict ={'user_id': '1111','first_name': 'Huy','last_name':'Nguyen Minh','dob':'15/03/2000','gender':'Male','address':'4418 TL10','email':'thaihuy836@gmail.com','Organization':'Hcmus'}
+
+    return render(request, 'teacher_info.html',my_dict)
 
 def form_name_view(request):
     form = forms.FormName()
