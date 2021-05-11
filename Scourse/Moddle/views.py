@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import forms
-from Moddle.models import Notification,lecturer, student, Course
+from .models import Notification,lecturer, student, Course
 # Create your views here.
 
 def index(request):
@@ -38,3 +38,8 @@ def form_name_view(request):
             print("TEXT: " + form.cleaned_data['text'])
 
     return render(request, 'form_page.html', {'form': form})
+
+def search(request):
+    q=request.GET['q']
+    data = Course.objects.filter(name=q).order_by('course_id')
+    return render(request,'search.html',{'data':data})

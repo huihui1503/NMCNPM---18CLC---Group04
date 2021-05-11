@@ -26,8 +26,13 @@
 		data-target="#navbarCollapse" aria-controls="navbarCollapse"
 		aria-expanded="false" aria-lable="Toggle navigation">
 		<span class="navbar-toggler-icon"></span></button>
-
 		<div class="collapse navbar-collapse" id="collapsibleNavId">
+			<form class="Tim kiem" id = "navbarNAV" action ="search">
+				<div class="input-group">
+					<input name = "q" type="text" class="form-control" placeholder="search"/>
+					<button class="btn btn-dark" type="Search" id="button-addon2">Search</button>
+				</div>
+			</form>
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					{% if user.is_authenticated %}
 						<li class="navbar-item">

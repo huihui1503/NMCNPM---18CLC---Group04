@@ -53,4 +53,4 @@ class Course(models.Model):
     ending_time = models.DateField()
     lecture_id = models.ForeignKey(lecturer, on_delete=models.CASCADE)
     def __str__(self):
-        return self.text
+        return self.name

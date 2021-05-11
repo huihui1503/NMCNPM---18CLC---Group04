@@ -1,5 +1,7 @@
+from .views import search
 from django.conf.urls import url
 from Moddle import views
+from django.urls import path
 
 # TEMPLATE TAGGING
 app_name = 'Moddle'
@@ -12,4 +14,5 @@ urlpatterns = [
     url(r'^student/$',views.student, name='student'),
     url(r'^teacher/help_page$',views.help_page, name='help_page'),
     url(r'^teacher/info/$',views.teacher_info, name='teacher_info'),
+    url(r'^search',views.search,name='search')
 ]
