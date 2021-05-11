@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
@@ -25,5 +25,6 @@ def register(request):
 	context = {'form': form}
 	return render(request, 'registration/register.html', context)
 
-def logout(request):
-	return render(request,'registration/logout.html')
+def exit(request):
+	logout(request)
+	return redirect('Moddle:logout')
