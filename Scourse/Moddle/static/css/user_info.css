@@ -1,0 +1,60 @@
+#user_info_nav{
+    background-color: white !important;
+    border-bottom: 1pt solid lightgray;
+}
+
+#user_infor_card{
+    margin-top: 10%;
+}
+#logo_image{
+    margin-right: 20%;
+}
+
+#my-nav{
+    margin-left: 40%;
+}
+
+#name-edit{
+    margin-left: 63px;
+    width: 400px;
+}
+
+#dob-edit{
+    margin-left: 10px;
+    width: 400px;
+}
+#save-change-button{
+    margin-top: 10px;
+    margin-left: 407px;
+    color: black;
+    height: 40px;
+    background-color:cyan;
+    border-radius: 10px;
+}
+#course-name{
+    color: green;
+}
+#link-course{
+    margin-left: 10px;
+    color: green;
+    font-weight: normal;
+}
+#each-course{
+    margin-bottom: 10px;
+}
+#page-number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#page-list li{
+    display: inline-block !important;
+}
+#each-page{
+    height: 30px;
+    width: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid lightgray;
+    color: red;
+}

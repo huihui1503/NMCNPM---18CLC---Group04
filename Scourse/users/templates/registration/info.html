@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+{% block content %}
+  <div class="container" id="user_infor_card">
+        <div class="card">
+            <div class="card-header">
+                <b id="username">
+                    <label for="name">Name
+                        <input type="text" placeholder="Tran Thanh Tuan" id="name-edit">
+                    </label>
+                    <br>
+                    <label for="dob">Date of birth
+                        <input type="text" placeholder="1/1/2000" id="dob-edit">
+
+                    </label>
+                    <br>
+                    <label for="button-change">
+                        <button id="save-change-button">Save change</button>
+                    </label>
+                </div>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Courses</h4>
+                <div class="card" id="each-course">
+                    <div class="card-body">
+
+                        <h5 class="card-title" id="course-name"><i class="fa fa-book"></i><a href="#" id="link-course">Mon 1</a></h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">Teacher: <a href="" id="link-course">Teacher name</a> </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+
+                        <h5 class="card-title" id="course-name"><i class="fa fa-book"></i><a href="#" id="link-course">Mon 1</a></h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">Teacher: <a href="" id="link-course">Teacher name</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" id="page-number">
+                <ul id="page-list">
+                    <li>
+                        <a href="" id="each-page">1</a>
+                    </li>
+                    <li>
+                        <a href="" id="each-page">2</a>
+                    </li>
+                    <li>
+                        <a href="" id="each-page">3</a>
+                    </li>
+                    <li>
+                        <a href="" id="each-page">4</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
