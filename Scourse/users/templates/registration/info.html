@@ -1,25 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
-{% load bootstrap5 %}
 {% block content %}
   <div class="container" id="user_infor_card">
         <div class="card">
             <div class="card-header">
-                <b id="username">
-                    <label for="name">Name
-                        <input type="text" placeholder="Tran Thanh Tuan" id="name-edit">
-                    </label>
+                    <label for="last_name"><b>Last Name</b>: Tran</label>
                     <br>
-                    <label for="dob">Date of birth
-                        <input type="text" placeholder="1/1/2000" id="dob-edit">
+                    <label for="first_name"><b>First Name</b>: Tuan</label>
+                    <br>
+                    <label for="address"><b>Adress</b>: 981</label>
+                    <br>
+                    <label for="phone"><b>Phone</b>: 000</label>
+                    <br>
+                    <label for="dob"><b>Date of birth</b>: 20/02/2000</label>
+                    <br>
+                    <button id="edit-info">Edit information</button>
 
-                    </label>
-                    <br>
-                    <label for="button-change">
-                        <button id="save-change-button">Save change</button>
-                    </label>
-                </div>
             </div>
+        </div>
             <div class="card-body">
                 <h4 class="card-title">Courses</h4>
                 <div class="card" id="each-course">
