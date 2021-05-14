@@ -14,9 +14,6 @@ urlpatterns = [
     url(r'^student/$',views.student, name='student'),
     url(r'^teacher/help_page$',views.help_page, name='help_page'),
     url(r'^teacher/info/$',views.teacher_info, name='teacher_info'),
-<<<<<<< HEAD
     url(r'^teacher/info/form$',views.teacher_form, name='teacher_form'),
-=======
-    url(r'^search',views.search,name='search')
->>>>>>> 6f8af9d89d733a7306d7ed3bec5af04b93e9dcce
+    url(r'^search',views.search,name='search'),
 ]
