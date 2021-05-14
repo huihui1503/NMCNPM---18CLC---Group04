@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import forms
+from .forms import LecturerForm
 from Moddle.models import Notification,lecturer, student, Course
+
+from .models import Notification,lecturer, student, Course
 # Create your views here.
 
 def index(request):
@@ -29,6 +32,17 @@ def student(request):
 def teacher(request):
     return render(request, 'teacher.html')
 
+def teacher_info(request):
+    my_dict ={'user_id': '1111','first_name': 'Huy','last_name':'Nguyen Minh','dob':'15/03/2000','gender':'Male','address':'4418 TL10','email':'thaihuy836@gmail.com','Organization':'Hcmus'}
+
+    return render(request, 'teacher_info.html',my_dict)
+def teacher_form(request):
+    form = LecturerForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context = {'form': form}
+    return render(request, 'teacher_form.html',context)
+
 def form_name_view(request):
     form = forms.FormName()
     if request.method == 'POST':
@@ -40,3 +54,8 @@ def form_name_view(request):
             print("TEXT: " + form.cleaned_data['text'])
 
     return render(request, 'form_page.html', {'form': form})
+
+def search(request):
+    q=request.GET['q']
+    data = Course.objects.filter(name=q).order_by('course_id')
+    return render(request,'search.html',{'data':data})

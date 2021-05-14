@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+
+</style>
+ <li>User ID: {{ user_id }}</li>
+ <li>First Name: {{ first_name }}</li>
+  <li>Last Name: {{last_name}}</li>
+  <li>Date of Birth: {{dob}}</li>
+  <li>Gender: {{gender}}</li>
+  <li>Address: {{address}}</li>
+  <li>Gmail: {{email}}</li>
+  <li>Organization: {{Organization}}</li>
+  <button class="button6" onclick=location.href="{% url 'Moddle:teacher_form'%}">Edit</button>
+  <button class="button" onclick=location.href="{% url 'Moddle:teacher' %}" name="button">Home</button>
+  <button class="button" type="button" id="button_2">Courses</button>
+  <button class="button" type="button" id="button_3">Register Course</button>
+  <button class="button" type="button" id="button_4">Change password</button>
+  <button class="button" type="button" name="button_5">Log out</button>
+{% endblock content %}

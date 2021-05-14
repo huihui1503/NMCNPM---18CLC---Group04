@@ -83,6 +83,7 @@ class TeacherAnswer(models.Model):
     is_correct = models.BooleanField('Result', default=False)
 
     def __str__(self):
+<<<<<<< HEAD
         return self.teacher_answer
 
 
@@ -96,3 +97,6 @@ class DoHomeWork(models.Model):
     homework = models.ForeignKey(HomeWork, on_delete=models.CASCADE)
     taken_student = models.ForeignKey(student, on_delete=models.CASCADE)
     score = models.FloatField()
+=======
+        return self.name
+>>>>>>> 27018f97818af9ebc4d08d02bdba746b0fdc5bc6
