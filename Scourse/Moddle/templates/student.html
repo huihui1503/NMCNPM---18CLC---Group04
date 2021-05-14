@@ -4,6 +4,6 @@
        <button class="button1" onclick=location.href="{% url 'Moddle:student_info' %}" name="button">Information</button>
        <button class="button2" type="button2" name="button2">Courses</button>
        <button class="button3" type="button" name="button3">Register Course</button>
-       <button class="button4" type="button" name="button4">Change password</button>
+       <button class="button4" onclick=location.href="{% url 'Moddle:change_password' %}" type="button" name="button4">Change password</button>
        <button class="button5" type="button" name="button5">Log out</button>
   {% endblock content %}

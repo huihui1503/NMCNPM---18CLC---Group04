@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^search',views.search,name='search'),
     url(r'^redirect_user_type/search',views.search),
     url(r'^student/info/search',views.search),
+    url(r'^password/$', views.change_password, name='change_password'),
 ]
