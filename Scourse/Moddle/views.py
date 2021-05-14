@@ -8,6 +8,12 @@ def index(request):
     return render(request, 'index.html')
 
 def redirect_user_type(request):
+    if request.user.is_authenticated:
+        if request.user.is_student:
+            return render(request, 'student.html')
+        else:
+            return render(request, 'teacher.html')
+
     return render(request, 'index.html')
 
 def logout(request):
@@ -21,7 +27,7 @@ def student(request):
     return render(request, 'student.html')
 
 def teacher(request):
-    return render(request, 'lecturer_home.html')
+    return render(request, 'teacher.html')
 
 def form_name_view(request):
     form = forms.FormName()

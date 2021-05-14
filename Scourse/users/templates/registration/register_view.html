@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block page_header %}
+	<div class="jumbotron">
+		<h1 class="display-3">Are you a student or teacher?</h1>
+		<p class="lead">Join us and learn new things from out website</p>
+		<a class="btn btn-lg btn-primary" href="{%  url 'users:register_student_form' %}" role="button">Sign in as Student &raquo;</a>
+		&nbsp &nbsp &nbsp
+		<a class="btn btn-lg btn-primary" href="{%  url 'users:register_teacher_form' %}" role="button">Sign in as Teacher &raquo;</a>
+	</div>
+{% endblock page_header %}
