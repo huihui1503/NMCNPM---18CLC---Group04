@@ -46,6 +46,9 @@ def teacher_form(request):
     context = {'form': form}
     return render(request, 'teacher_form.html',context)
 
+def student_info(request):
+	context = {}
+	return render(request, 'student_info.html', context)
 def form_name_view(request):
     form = forms.FormName()
     if request.method == 'POST':
