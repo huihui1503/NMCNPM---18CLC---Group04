@@ -4,15 +4,30 @@
 <style>
 
 </style>
- <li>User ID: {{ user_id }}</li>
- <li>First Name: {{ first_name }}</li>
-  <li>Last Name: {{last_name}}</li>
-  <li>Date of Birth: {{dob}}</li>
-  <li>Gender: {{gender}}</li>
-  <li>Address: {{address}}</li>
-  <li>Gmail: {{email}}</li>
-  <li>Organization: {{Organization}}</li>
-  <button class="button6" onclick=location.href="{% url 'Moddle:teacher_form'%}">Edit</button>
+<div class="container" id="user_infor_card">
+  <div class="card">
+            <div class="card-header">
+                    <label for="user_id"><b>User ID</b>: {{ user_id }}</label>
+                    <br>
+                    <label for="first_name"><b>First Name</b>: {{ first_name }}</label>
+                    <br>
+                    <label for="last_name"><b>Last Name</b>: {{last_name}}</label>
+                    <br>
+                    <label for="date_of_birth"><b>Date of Birth</b>: {{dob}}</label>
+                    <br>
+                    <label for="gender"><b>Gender</b>: {{gender}}</label>
+                    <br>
+                    <label for="Address"><b>Address</b>: {{address}}</label>
+                    <br>
+                    <label for="Gmail"><b>Gmail</b>: {{email}}</label>
+                    <br>
+                    <label for="Organization"><b>Organization</b>: {{Organization}}</label>
+                    <br>
+                    <button id="edit-info" onclick=location.href="{% url 'Moddle:teacher_form'%}">Edit</button>
+
+            </div>
+        </div>
+      </div>
   <button class="button" onclick=location.href="{% url 'Moddle:teacher' %}" name="button">Home</button>
   <button class="button" type="button" id="button_2">Courses</button>
   <button class="button" type="button" id="button_3">Register Course</button>

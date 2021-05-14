@@ -25,10 +25,11 @@ def student(request):
 
 def teacher(request):
     return render(request, 'lecturer_home.html')
-def teacher_info(request):
-    my_dict ={'user_id': '1111','first_name': 'Huy','last_name':'Nguyen Minh','dob':'15/03/2000','gender':'Male','address':'4418 TL10','email':'thaihuy836@gmail.com','Organization':'Hcmus'}
+def teacher_info(request,user_id):
+    lecturer.objects.get(id = user_id)
+    #my_dict ={'user_id': request.user.user_id,'first_name': request.user.first_name,'last_name':request.user.last_name,'dob':request.user.dob,'gender':request.user.gender,'address':request.user.address,'email':request.user.email,'Organization':request.user.Organization}
 
-    return render(request, 'teacher_info.html',my_dict)
+    return render(request, 'teacher_info.html',{})
 def teacher_form(request):
     form = LecturerForm(request.POST or None)
     if form.is_valid():
