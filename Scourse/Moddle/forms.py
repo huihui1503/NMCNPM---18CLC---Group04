@@ -1,6 +1,6 @@
 from django import forms
 from django.core import validators
-
+from .models import lecturer
 class FormName(forms.Form):
     name = forms.CharField()
     email = forms.EmailField()
@@ -14,3 +14,8 @@ class FormName(forms.Form):
 
         if email != vmail:
             raise forms.ValidationError("MAKE SURE EMAILS MATCH !")
+class LecturerForm(forms.ModelForm):
+    class Meta:
+        model = lecturer
+        fields = ['user_id','first_name','last_name','dob','gender','address','phone','email','Organization']
+        

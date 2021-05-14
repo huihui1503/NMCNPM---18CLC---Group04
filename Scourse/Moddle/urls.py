@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^student/$',views.student, name='student'),
     url(r'^teacher/help_page$',views.help_page, name='help_page'),
     url(r'^teacher/info/$',views.teacher_info, name='teacher_info'),
+    url(r'^teacher/info/form$',views.teacher_form, name='teacher_form'),
 ]
