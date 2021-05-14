@@ -17,5 +17,4 @@ class FormName(forms.Form):
 class LecturerForm(forms.ModelForm):
     class Meta:
         model = lecturer
-        fields = ['user_id','first_name','last_name','dob','gender','address','phone','email','Organization']
-        
+        fields = ['user','first_name','last_name','dob','gender','address','phone','email','Organization']

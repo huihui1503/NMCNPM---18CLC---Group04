@@ -11,7 +11,11 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="{% static 'css/navbarcss.css'%}">
 	<link rel="stylesheet" href="{% static 'css/style_button.css'%}">
+<<<<<<< HEAD
+	<link rel="stylesheet" href="{% static 'css/note.css'%}">
+=======
 	<link rel="stylesheet" href="{% static 'css/user_info.css'%}">
+>>>>>>> 27018f97818af9ebc4d08d02bdba746b0fdc5bc6
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -44,7 +48,7 @@
 						</li>
 					{% else %}
 						<li class="nav-item">
-							<a class="nav-link" href="{% url 'users:register' %}">Register</a>
+							<a class="nav-link" href="{% url 'users:register_view' %}">Register</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{% url 'users:login' %}">Log in</a>
@@ -56,13 +60,48 @@
 	</nav>
 
 	<main role="main" class="container">
-		<div class="pb-2 mb-2 border-bottom">
-			{% block page_header %}{% endblock page_header %}
-		</div>
+		{% block page_header %}{% endblock page_header %}
 		<div>
 			{% block content %}{% endblock content %}
 		</div>
 	</main>
+	<button class="openNote-button" onclick="openNote()">Note</button>
+
+	<div class="note-popup" id="NoteStyle">
+	  <form class="form-container">
+	    <h1>Note</h1>
+
+	    <label> <b>Keep track your studing</b></label>
+	    <textarea id="note_content"placeholder="Noting Area.."></textarea>
+
+			<button id="NoteDownloadButton" class="btn" onclick="downloadNote()"> Download</button>
+	    <button type="button" class="btn cancel" onclick="closeNote()">Close</button>
+	  </form>
+	</div>
+
+	<script>
+		function openNote() {
+		  document.getElementById("NoteStyle").style.display = "block";
+		}
+
+		function closeNote() {
+		  document.getElementById("NoteStyle").style.display = "none";
+		}
+		function downloadNote(){
+				let data = document.querySelector('#note_content').value;
+				let file = 'note-' + Date.now() + '.txt';
+
+				let link = document.createElement('a');
+				link.download = file;
+				let blob = new Blob(['' + data + ''], {
+					type: 'text/plain'
+				});
+				link.href = URL.createObjectURL(blob);
+				link.click();
+				URL.revokeObjectURL(link.href);
+		}
+	</script>
+
 
 </body>
 
