@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<form action="{% url 'Moddle:teacher_form'%}" method="post">
-  {% csrf_token %}
-  {{form.as_p}}
-  <button name="submit">Save changes</button>
-</form>
-  <button class="button" id="edit-info" onclick=location.href="{% url 'Moddle:teacher_info' %}">Back</button>
+<div class= "container">
+  <div class="jumbotron">
+      <form action="{% url 'Moddle:teacher_form'%}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class= "btn btn-primary"name="submit">Save changes</button>  &ensp; &ensp; <button class="btn btn-danger" onclick=location.href="{% url 'Moddle:teacher_info' %}">Cancel</button>
+      </form>
+  </div>
+</div>
 {% endblock content %}

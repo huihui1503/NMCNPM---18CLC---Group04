@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+	<h2>List of Courses</h2>
+{% endblock page_header %}
+
+{% block content %}
+	<p>Courses</p>
+	<ul>
+		{% for course in courses %}
+			<li>
+        <h4 class="card-title" id="course-name"><i class="fa fa-book"></i><a href="{% url 'Moddle:course_info' course.course_id %}">{{ course.name}}</a></h4>
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">Date Added: {{ date_added }}</p>
+            </div>
+          </div>
+			</li>
+		{% empty %}
+			<li><h3>No courses have been added yet.</h3></li>
+		{% endfor %}
+	</ul>
+
+ <button class="btn btn-primary" onclick=location.href="{% url 'Moddle:new_course' %}">Add new course</button>
+{% endblock content %}

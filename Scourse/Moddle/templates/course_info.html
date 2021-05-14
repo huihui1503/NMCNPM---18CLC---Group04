@@ -4,22 +4,21 @@
 <style>
 
 </style>
-<div class="container" id="user_infor_card">
-  <div class="card">
-            <div class="card-header">
-                    <label><b>Course ID:</b> {{ course_id }}</label>
-                    <br>
-                    <label><b>Course Name:</b> {{ course_name }}</label>
-                    <br>
-                    <label><b>Starting Date: </b> {{ startDate}}</label>
-                    <br>
-                    <label><b>Ending Date:</b> {{ endDate }}</label>
-                    <br>
-                    <label><b>Lecture Name:</b> {{ lectureName }}</label>
-
-                    <button  class= "btn btn-primary" onclick=location.href="{% url 'Moddle:edit_course'%}">Edit Course</button>
-
-            </div>
-        </div>
-      </div>
+<div class="container" style="width: 500px">
+  <div class="jumbotron" text-center>
+          <label><b>Course ID:</b> {{ course_id }}</label>
+          <br>
+          <label><b>Course Name:</b> {{ course_name }}</label>
+          <br>
+          <label><b>Starting Date: </b> {{ startDate}}</label>
+          <br>
+          <label><b>Ending Date:</b> {{ endDate }}</label>
+          <br>
+          <label><b>Lecture Name:</b> {{ lectureName }}</label>
+          <br>
+          <br>
+          <small><a href="{% url 'Moddle:edit_course' course_id %}">Edit Course</a></small>
+          &emsp;&emsp;<button  class= "btn btn-primary" onclick=location.href="{% url 'Moddle:course_home' %}">Back</button>
+  </div>
+</div>
 {% endblock content %}

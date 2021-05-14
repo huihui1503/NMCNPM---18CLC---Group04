@@ -26,6 +26,13 @@
     margin-left: 10%;
     margin-top: 4%;
 }
+
+#jumbotron{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #username-input{
     width: 40%;
     margin-right: 10%;
