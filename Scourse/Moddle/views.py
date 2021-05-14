@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . import forms
-
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from .forms import LecturerForm, StudentForm
 from .forms import *
 from Moddle.models import Notification,lecturer, student, Course
@@ -18,7 +20,7 @@ def redirect_user_type(request):
         if request.user.is_student:
             return render(request, 'student.html')
         else:
-            return render(request, 'lecturer_home.html')
+            return render(request, 'teacher.html')
 
     return render(request, 'index.html')
 
@@ -104,6 +106,34 @@ def student_form(request):
         return redirect("Moddle:student_info")
     context = {'form': form}
     return render(request, 'student_form.html',context)
+
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect_user_type(request)
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'change_password.html', {'form': form})
+#def form_name_view(request):
+    #form = forms.FormName()
+    #if request.method == 'POST':
+        #form = forms.FormName(request.POST)
+        #if form.is_valid():
+            #print("VALIDATION SUCCESS!")
+            #print("NAME: " + form.cleaned_data['name'])
+            #print("EMAIL: " + form.cleaned_data['email'])
+            #print("TEXT: " + form.cleaned_data['text'])
+
+    #return render(request, 'form_page.html', {'form': form})
+	#context = {}
+	#return render(request, 'student_info.html', context)
 
 def search(request):
     q=request.GET['q']

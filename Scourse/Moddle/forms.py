@@ -12,16 +12,20 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.forms.utils import ValidationError
 
-
 class LecturerForm(forms.ModelForm):
-    first_name = forms.CharField()
-    last_name = forms.CharField()
-    dob = forms.DateField()
-    gender = forms.CharField()
-    address = forms.CharField()
-    phone = forms.CharField()
-    email = forms.EmailField()
-    Organization = forms.CharField()
+    GENDER = (
+        ("Male", "Male"),
+        ("Female", "Female"),
+        ("Uknown", "Uknown"),
+    )
+    first_name = forms.CharField(max_length=50)
+    last_name = forms.CharField(max_length=50)
+    dob = forms.DateField(widget=NumberInput(attrs={'type': 'date'}))
+    gender = forms.CharField(max_length=7, widget=forms.Select(choices=GENDER))
+    address = forms.CharField(max_length=200)
+    phone = forms.CharField(max_length=15)
+    email = forms.EmailField(required = False)
+    Organization = forms.CharField(max_length=200)
     class Meta:
         model = lecturer
         fields=['first_name','last_name','dob','gender','address','phone','email','Organization']
@@ -49,4 +53,5 @@ class CourseForm(forms.ModelForm):
     ending_time = forms.DateField()
     class Meta:
         model = Course
+        fields=['name','starting_time','ending_time']
         fields=['name','starting_time','ending_time']
