@@ -33,12 +33,16 @@ def teacher(request):
     return render(request, 'teacher.html')
 def teacher_info(request):
     lec = lecturer.objects.get(user = request.user)
-    my_dict ={'user_id': lec.user_id,'last_name':lec.last_name,'dob':lec.dob,'gender':lec.gender,'address':lec.address,'email':lec.email,'Organization':lec.Organization}
-    return render(request, 'teacher_info.html',my_dict)
+    print(request.POST)
+    print(lec.last_name)
+    init_data ={'user_id':lec.user,'first_name': lec.first_name,'last_name':lec.last_name,'dob':lec.dob,'gender':lec.gender,'address':lec.address,'email':lec.email,'Organization':lec.Organization}
+    return render(request, 'teacher_info.html',init_data)
 
 
 def teacher_form(request):
-    form = LecturerForm(request.POST or None)
+
+    lec = lecturer.objects.get(id = request.user)
+    form = LecturerForm(request.POST or None,instance = lec)
     if form.is_valid():
         form.save()
     context = {'form': form}

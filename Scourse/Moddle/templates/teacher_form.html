@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<form>
+<form action="{% url 'Moddle:teacher_form'%}" method = 'POST'> {%csrf_token%}
   {{form.as_p}}
   <input type='submit' value='Save'/>
 </form>
-<input name='q'>  
-<button class="button" onclick=location.href="{% url 'Moddle:teacher_info' %}">Cancel</button>
+<button class="button" onclick=location.href="{% url 'Moddle:teacher_info' %}">Back</button>
 {% endblock content %}

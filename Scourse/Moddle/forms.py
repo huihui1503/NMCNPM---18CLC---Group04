@@ -15,6 +15,14 @@ class FormName(forms.Form):
         if email != vmail:
             raise forms.ValidationError("MAKE SURE EMAILS MATCH !")
 class LecturerForm(forms.ModelForm):
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    dob = forms.DateField()
+    gender = forms.CharField()
+    address = forms.CharField()
+    phone = forms.CharField()
+    email = forms.EmailField()
+    Organization = forms.CharField()
     class Meta:
         model = lecturer
-        fields = ['user','first_name','last_name','dob','gender','address','phone','email','Organization']
+        fields=['first_name','last_name','dob','gender','address','phone','email','Organization']
