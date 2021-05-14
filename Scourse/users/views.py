@@ -24,7 +24,9 @@ def register(request):
 	# Display a blank or invalid form.
 	context = {'form': form}
 	return render(request, 'registration/register.html', context)
-
+def info(request):
+	context = {}
+	return render(request, 'registration/info.html', context)
 def exit(request):
 	logout(request)
 	return redirect('Moddle:logout')
