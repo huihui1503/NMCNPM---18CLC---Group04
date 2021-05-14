@@ -39,7 +39,7 @@
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					{% if user.is_authenticated %}
 						<li class="navbar-item">
-							<a class="nav-link" href="{% url 'Moddle:student_info' %}">Hello, {{ user.username }}.</a>
+							<a class="nav-link" href="{% url 'Moddle:redirect_user_type' %}">Hello, {{ user.username }}.</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{% url 'users:exit' %}">Log out</a>

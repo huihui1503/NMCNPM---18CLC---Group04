@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+
+</style>
+<div class="container" id="user_infor_card">
+  <div class="card">
+            <div class="card-header">
+                    <label><b>Course ID:</b> {{ course_id }}</label>
+                    <br>
+                    <label><b>Course Name:</b> {{ course_name }}</label>
+                    <br>
+                    <label><b>Starting Date: </b> {{ startDate}}</label>
+                    <br>
+                    <label><b>Ending Date:</b> {{ endDate }}</label>
+                    <br>
+                    <label><b>Lecture Name:</b> {{ lectureName }}</label>
+
+                    <button  class= "btn btn-primary" onclick=location.href="{% url 'Moddle:edit_course'%}">Edit Course</button>
+
+            </div>
+        </div>
+      </div>
+{% endblock content %}
