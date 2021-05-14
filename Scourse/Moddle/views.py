@@ -20,7 +20,7 @@ def redirect_user_type(request):
         if request.user.is_student:
             return render(request, 'student.html')
         else:
-            return render(request, 'lecturer_home.html')
+            return render(request, 'teacher.html')
 
     return render(request, 'index.html')
 
