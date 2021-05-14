@@ -1,5 +1,6 @@
 from django import forms
 from django.core import validators
+<<<<<<< HEAD
 from .models import lecturer
 from django.forms.widgets import NumberInput
 class FormName(forms.Form):
@@ -7,14 +8,14 @@ class FormName(forms.Form):
     email = forms.EmailField()
     verify_email = forms.EmailField(label='Enter your email again: ')
     text = forms.CharField(widget=forms.Textarea)
+=======
+from .models import lecturer,student,Course,HomeWork
+from django.contrib.auth.forms import UserCreationForm
+from django.db import transaction
+from django.forms.utils import ValidationError
+>>>>>>> 72d4dcbaabb1fd15837327eb8d0b5512a8cc8034
 
-    def clean(self):
-        all_clean_data = super().clean()
-        email = all_clean_data['email']
-        vmail = all_clean_data['verify_email']
 
-        if email != vmail:
-            raise forms.ValidationError("MAKE SURE EMAILS MATCH !")
 class LecturerForm(forms.ModelForm):
     first_name = forms.CharField()
     last_name = forms.CharField()
@@ -27,6 +28,7 @@ class LecturerForm(forms.ModelForm):
     class Meta:
         model = lecturer
         fields=['first_name','last_name','dob','gender','address','phone','email','Organization']
+<<<<<<< HEAD
 class StudentForm(forms.ModelForm):
     GENDER = (
         ("Male", "Male"),
@@ -45,3 +47,13 @@ class StudentForm(forms.ModelForm):
     class Meta:
         model = lecturer
         fields = ['first_name', 'last_name', 'dob', 'gender', 'address', 'phone', 'email', 'Organization']
+=======
+
+class EditCourseForm(forms.ModelForm):
+    name = forms.CharField(max_length=100)
+    starting_time = forms.DateField()
+    ending_time = forms.DateField()
+    class Meta:
+        model = Course
+        fields=['name','starting_time','ending_time']
+>>>>>>> 72d4dcbaabb1fd15837327eb8d0b5512a8cc8034

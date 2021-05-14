@@ -48,7 +48,7 @@ class HomeWork(models.Model):
     name = models.CharField(max_length=200)
     student_task = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-
+    score = models.FloatField()
     def __str__(self):
         return self.name
 
@@ -67,32 +67,10 @@ class student(models.Model):
 
 
     def __str__(self):
-        return self.user_id.username
-
-class Question(models.Model):
-    task = models.ForeignKey(HomeWork, on_delete=models.CASCADE)
-    content= models.CharField('Question', max_length=200)
-
-    def __str__(self):
-        return self.content
-
-
-class TeacherAnswer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    teacher_answer = models.CharField('Answer', max_length=255)
-    is_correct = models.BooleanField('Result', default=False)
-
-    def __str__(self):
-        return self.teacher_answer
-
-
-class StudentAnswer(models.Model):
-    taken_student = models.ForeignKey(student, on_delete=models.CASCADE)
-    student_answer = models.ForeignKey(TeacherAnswer, on_delete=models.CASCADE)
+        return self.user.username
 
 
 class DoHomeWork(models.Model):
     taken_date = models.DateTimeField(auto_now_add=True)
     homework = models.ForeignKey(HomeWork, on_delete=models.CASCADE)
     taken_student = models.ForeignKey(student, on_delete=models.CASCADE)
-    score = models.FloatField()
