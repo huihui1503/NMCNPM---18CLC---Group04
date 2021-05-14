@@ -1,11 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . import forms
-<<<<<<< HEAD
 from .forms import LecturerForm, StudentForm
-=======
 from .forms import *
->>>>>>> 72d4dcbaabb1fd15837327eb8d0b5512a8cc8034
 from Moddle.models import Notification,lecturer, student, Course
 
 from .models import Notification,lecturer, student, Course
@@ -42,8 +39,6 @@ def teacher_info(request):
     init_data ={'user_id':lec.user,'first_name': lec.first_name,'last_name':lec.last_name,'dob':lec.dob,'gender':lec.gender,'address':lec.address,'email':lec.email,'Organization':lec.Organization}
     return render(request, 'teacher_info.html',init_data)
 
-<<<<<<< HEAD
-=======
 def course_info(request):
     _course = Course.objects.get(course_id=request.course_id)
     _courseData = {'course_id': _course.course_id, 'course_name': _course.name, 'startDate': _course.starting_time, 'endDate': _course.ending_time, 'lectureName': _course.lecture_id.first_name + _course.lecture_id.last_name }
@@ -60,18 +55,17 @@ def edit_course(request, course_id):
         context = {'form': form}
     return render(request, 'editcourse_form.html', context)
 
->>>>>>> 72d4dcbaabb1fd15837327eb8d0b5512a8cc8034
 def teacher_form(request):
     lec = lecturer.objects.get(user = request.user)
     form = LecturerForm(request.POST or None,instance = lec)
     if form.is_valid():
         form.save()
+        return redirect("Moddle:teacher_info")
     context = {'form': form}
     return render(request, 'teacher_form.html', context)
 
 
 def student_info(request):
-<<<<<<< HEAD
     stu = student.objects.get(user=request.user)
     init_data ={'user_id':stu.user,'first_name': stu.first_name,'last_name':stu.last_name,
                 'dob':stu.dob,'gender':stu.gender,'address':stu.address,
@@ -86,6 +80,7 @@ def student_form(request):
         return redirect("Moddle:student_info")
     context = {'form': form}
     return render(request, 'student_form.html',context)
+    '''
 def form_name_view(request):
     form = forms.FormName()
     if request.method == 'POST':
@@ -96,12 +91,9 @@ def form_name_view(request):
             print("EMAIL: " + form.cleaned_data['email'])
             print("TEXT: " + form.cleaned_data['text'])
 
-    return render(request, 'form_page.html', {'form': form})
-=======
-	context = {}
-	return render(request, 'student_info.html', context)
->>>>>>> 72d4dcbaabb1fd15837327eb8d0b5512a8cc8034
-
+    #return render(request, 'form_page.html', {'form': form})
+	#context = {}
+	return render(request, 'student_info.html', context)'''
 def search(request):
     q=request.GET['q']
     data = Course.objects.filter(name=q).order_by('name')
