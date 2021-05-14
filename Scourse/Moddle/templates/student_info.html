@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
   <div class="container" id="user_infor_card">
+        <h4 class="card-title">Information</h4>
         <div class="card">
             <div class="card-header">
                     <label for="user_id"><b>User ID</b>: {{ user_id }}</label>
@@ -22,51 +23,5 @@
                     <br>
                     <button id="edit-info" onclick=location.href="{% url 'Moddle:student_form'%}">Edit information</button>
             </div>
-        </div>
-            <div class="card-body">
-                <h4 class="card-title">Courses</h4>
-                <div class="card" id="each-course">
-                    <div class="card-body">
-
-                        <h5 class="card-title" id="course-name"><i class="fa fa-book"></i><a href="#" id="link-course">Mon 1</a></h5>
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-text">Teacher: <a href="" id="link-course">Teacher name</a> </p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-
-                        <h5 class="card-title" id="course-name"><i class="fa fa-book"></i><a href="#" id="link-course">Mon 1</a></h5>
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-text">Teacher: <a href="" id="link-course">Teacher name</a> </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container" id="page-number">
-                <ul id="page-list">
-                    <li>
-                        <a href="" id="each-page">1</a>
-                    </li>
-                    <li>
-                        <a href="" id="each-page">2</a>
-                    </li>
-                    <li>
-                        <a href="" id="each-page">3</a>
-                    </li>
-                    <li>
-                        <a href="" id="each-page">4</a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
     </div>
 {% endblock content %}
