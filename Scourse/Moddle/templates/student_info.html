@@ -4,18 +4,23 @@
   <div class="container" id="user_infor_card">
         <div class="card">
             <div class="card-header">
-                    <label for="last_name"><b>Last Name</b>: Tran</label>
+                    <label for="user_id"><b>User ID</b>: {{ user_id }}</label>
                     <br>
-                    <label for="first_name"><b>First Name</b>: Tuan</label>
+                    <label for="first_name"><b>First Name</b>: {{ first_name }}</label>
                     <br>
-                    <label for="address"><b>Adress</b>: 981</label>
+                    <label for="last_name"><b>Last Name</b>: {{last_name}}</label>
                     <br>
-                    <label for="phone"><b>Phone</b>: 000</label>
+                    <label for="date_of_birth"><b>Date of Birth</b>: {{dob}}</label>
                     <br>
-                    <label for="dob"><b>Date of birth</b>: 20/02/2000</label>
+                    <label for="gender"><b>Gender</b>: {{gender}}</label>
                     <br>
-                    <button id="edit-info">Edit information</button>
-
+                    <label for="Address"><b>Address</b>: {{address}}</label>
+                    <br>
+                    <label for="Gmail"><b>Gmail</b>: {{email}}</label>
+                    <br>
+                    <label for="Organization"><b>Organization</b>: {{Organization}}</label>
+                    <br>
+                    <button id="edit-info" onclick=location.href="{% url 'Moddle:student_form'%}">Edit information</button>
             </div>
         </div>
             <div class="card-body">

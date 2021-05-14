@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form action="{% url 'Moddle:student_form'%}" method = 'POST'> {%csrf_token%}
+  {{form|crispy}}
+    <input id="edit-info" type='submit' value='Save'/>
+</form>
+<button class="button" id="edit-info" onclick=location.href="{% url 'Moddle:student_info' %}">Back</button>
+
+{% endblock content %}

@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . import forms
-from .forms import LecturerForm
+from .forms import LecturerForm, StudentForm
 from Moddle.models import Notification,lecturer, student, Course
 
 from .models import Notification,lecturer, student, Course
@@ -26,7 +26,7 @@ def help_page(request):
     my_dict = {'name': 'Group 04', 'email': 'xuanloc2018@gmail.com'}
     return render(request, 'error.html', context=my_dict)
 
-def student(request):
+def Student(request):
     return render(request, 'student.html')
 
 def teacher(request):
@@ -38,9 +38,7 @@ def teacher_info(request):
     init_data ={'user_id':lec.user,'first_name': lec.first_name,'last_name':lec.last_name,'dob':lec.dob,'gender':lec.gender,'address':lec.address,'email':lec.email,'Organization':lec.Organization}
     return render(request, 'teacher_info.html',init_data)
 
-
 def teacher_form(request):
-
     lec = lecturer.objects.get(user = request.user)
     form = LecturerForm(request.POST or None,instance = lec)
     if form.is_valid():
@@ -49,8 +47,20 @@ def teacher_form(request):
     return render(request, 'teacher_form.html',context)
 
 def student_info(request):
-	context = {}
-	return render(request, 'student_info.html', context)
+    stu = student.objects.get(user=request.user)
+    init_data ={'user_id':stu.user,'first_name': stu.first_name,'last_name':stu.last_name,
+                'dob':stu.dob,'gender':stu.gender,'address':stu.address,
+                'email':stu.email,'Organization':stu.Organization}
+    return render(request, 'student_info.html', init_data)
+
+def student_form(request):
+    stu = student.objects.get(user = request.user)
+    form = StudentForm(request.POST or None,instance = stu)
+    if form.is_valid():
+        form.save()
+        return redirect("Moddle:student_info")
+    context = {'form': form}
+    return render(request, 'student_form.html',context)
 def form_name_view(request):
     form = forms.FormName()
     if request.method == 'POST':
