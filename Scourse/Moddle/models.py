@@ -21,7 +21,7 @@ class lecturer(models.Model):
 
 
     def __str__(self):
-        return self.user.username
+        return str(self.user)
 
 
 class Course(models.Model):
@@ -32,7 +32,7 @@ class Course(models.Model):
     lecture_id = models.ForeignKey(lecturer, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.course_id
+        return self.name
 
 
 class Notification(models.Model):
