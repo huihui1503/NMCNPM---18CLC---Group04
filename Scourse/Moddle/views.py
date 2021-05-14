@@ -30,6 +30,9 @@ def help_page(request):
 def student(request):
     return render(request, 'student.html')
 
+def course_home(request):
+    return render(request, 'course.html')
+
 def teacher(request):
     return render(request, 'teacher.html')
 
@@ -46,13 +49,27 @@ def course_info(request):
 def edit_course(request, course_id):
     _course = Course.objects.get(course_id = request.course_id)
     if request.method != 'POST':
-        form =  EditCourseForm(instance=_course)
+        form =  CourseForm(instance=_course)
     else:
-        form =  EditCourseForm(instance=_course, data=request.POST)
+        form =  CourseForm(instance=_course, data=request.POST)
         if form.is_valid():
             form.save()
-        context = {'form': form}
+    context = {'form': form}
     return render(request, 'editcourse_form.html', context)
+
+def new_course(request):
+    if request.method != 'POST':
+        form =  CourseForm()
+    else:
+        form =  CourseForm(data=request.POST)
+        if form.is_valid():
+            new_course = form.save(commit=False)
+            new_course.owner = request.user
+            new_course.lecture_id = request.user_id
+            form.save()
+            return redirect('Moddle:course_info')
+    context = {'form': form}
+    return render(request, 'new_course.html', context)
 
 def teacher_form(request):
     lec = lecturer.objects.get(user = request.user)

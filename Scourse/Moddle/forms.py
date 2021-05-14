@@ -19,7 +19,7 @@ class LecturerForm(forms.ModelForm):
         model = lecturer
         fields=['first_name','last_name','dob','gender','address','phone','email','Organization']
 
-class EditCourseForm(forms.ModelForm):
+class CourseForm(forms.ModelForm):
     name = forms.CharField(max_length=100)
     starting_time = forms.DateField()
     ending_time = forms.DateField()
