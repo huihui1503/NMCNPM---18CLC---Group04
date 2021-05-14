@@ -22,7 +22,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-md navbar-light mb-4 border">
-		<a class="navbar-brand" href="{% url 'Moddle:index' %}">
+		<a class="navbar-brand" href="{% url 'Moddle:redirect_user_type' %}">
 			<img src="{% static 'images/logo_navbar.jpg' %}" alt="Opps" id="logo">
 		</a>
 		<button class='navbar-toggler' type="button" data-toggle="collapse"
@@ -39,7 +39,7 @@
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					{% if user.is_authenticated %}
 						<li class="navbar-item">
-							<a class="nav-link" href="{% url 'users:info' %}">Hello, {{ user.username }}.</a>
+							<a class="nav-link" href="{% url 'Moddle:student_info' %}">Hello, {{ user.username }}.</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{% url 'users:exit' %}">Log out</a>

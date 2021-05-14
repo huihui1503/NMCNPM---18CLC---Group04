@@ -65,9 +65,6 @@ def register_teacher_form(request):
 	context = {'form': form}
 	return render(request, 'registration/register_teacher.html', context)
 
-def info(request):
-	context = {}
-	return render(request, 'registration/info.html', context)
 
 def exit(request):
 	logout(request)

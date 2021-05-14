@@ -6,6 +6,7 @@ from Moddle.models import Notification,lecturer, student, Course
 
 from .models import Notification,lecturer, student, Course
 # Create your views here.
+from django.views.generic import CreateView, ListView, UpdateView
 
 def index(request):
     return render(request, 'index.html')
@@ -15,7 +16,7 @@ def redirect_user_type(request):
         if request.user.is_student:
             return render(request, 'student.html')
         else:
-            return render(request, 'teacher.html')
+            return render(request, 'lecturer_home.html')
 
     return render(request, 'index.html')
 
@@ -30,30 +31,25 @@ def student(request):
     return render(request, 'student.html')
 
 def teacher(request):
-    return render(request, 'teacher.html')
+    return render(request, 'lecturer_home.html')
 
 def teacher_info(request):
-    my_dict ={'user_id': '1111','first_name': 'Huy','last_name':'Nguyen Minh','dob':'15/03/2000','gender':'Male','address':'4418 TL10','email':'thaihuy836@gmail.com','Organization':'Hcmus'}
+    lec = lecturer.objects.get(user = request.user)
+    my_dict ={'user_id': lec.user_id,'first_name': lec.first_name,'last_name':lec.last_name,'dob': lec.dob,'gender': lec.gender,'address': lec.address,'email': lec.email,'Organization': lec.Organization}
+    return render(request, 'teacher_info.html')
 
-    return render(request, 'teacher_info.html',my_dict)
 def teacher_form(request):
-    form = LecturerForm(request.POST or None)
+    lec_info = lecturer.objects.get(user=request.user)
+    form = LecturerForm(request.POST or None, instance=lec_info)
     if form.is_valid():
         form.save()
     context = {'form': form}
-    return render(request, 'teacher_form.html',context)
+    return render(request, 'teacher_form.html', context)
 
-def form_name_view(request):
-    form = forms.FormName()
-    if request.method == 'POST':
-        form = forms.FormName(request.POST)
-        if form.is_valid():
-            print("VALIDATION SUCCESS!")
-            print("NAME: " + form.cleaned_data['name'])
-            print("EMAIL: " + form.cleaned_data['email'])
-            print("TEXT: " + form.cleaned_data['text'])
 
-    return render(request, 'form_page.html', {'form': form})
+def student_info(request):
+	context = {}
+	return render(request, 'student_info.html', context)
 
 def search(request):
     q=request.GET['q']
