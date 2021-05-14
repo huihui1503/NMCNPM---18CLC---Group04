@@ -41,7 +41,7 @@ def teacher_info(request):
 
 def teacher_form(request):
 
-    lec = lecturer.objects.get(id = request.user)
+    lec = lecturer.objects.get(user = request.user)
     form = LecturerForm(request.POST or None,instance = lec)
     if form.is_valid():
         form.save()
