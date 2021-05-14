@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<form action="{% url 'Moddle:edit_course'%}" method="post">
+<form action="{% url 'Moddle:edit_course' Course.course_id  %}" method="post">
   {% csrf_token %}
   {{form.as_p}}
   <button name="submit">Save changes</button>

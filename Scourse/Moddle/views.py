@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . import forms
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from .forms import LecturerForm, StudentForm
 from .forms import *
 from Moddle.models import Notification,lecturer, student, Course
@@ -17,7 +20,7 @@ def redirect_user_type(request):
         if request.user.is_student:
             return render(request, 'student.html')
         else:
-            return render(request, 'lecturer_home.html')
+            return render(request, 'teacher.html')
 
     return render(request, 'index.html')
 
@@ -30,6 +33,9 @@ def help_page(request):
 
 def Student(request):
     return render(request, 'student.html')
+
+def course_home(request):
+    return render(request, 'course.html')
 
 def teacher(request):
     return render(request, 'teacher.html')
@@ -47,13 +53,27 @@ def course_info(request):
 def edit_course(request, course_id):
     _course = Course.objects.get(course_id = request.course_id)
     if request.method != 'POST':
-        form =  EditCourseForm(instance=_course)
+        form =  CourseForm(instance=_course)
     else:
-        form =  EditCourseForm(instance=_course, data=request.POST)
+        form =  CourseForm(instance=_course, data=request.POST)
         if form.is_valid():
             form.save()
-        context = {'form': form}
+    context = {'form': form}
     return render(request, 'editcourse_form.html', context)
+
+def new_course(request):
+    if request.method != 'POST':
+        form =  CourseForm()
+    else:
+        form =  CourseForm(data=request.POST)
+        if form.is_valid():
+            new_course = form.save(commit=False)
+            new_course.owner = request.user
+            new_course.lecture_id = request.user_id
+            form.save()
+            return redirect('Moddle:course_info')
+    context = {'form': form}
+    return render(request, 'new_course.html', context)
 
 def teacher_form(request):
     lec = lecturer.objects.get(user = request.user)
@@ -63,7 +83,6 @@ def teacher_form(request):
         return redirect("Moddle:teacher_info")
     context = {'form': form}
     return render(request, 'teacher_form.html', context)
-
 
 def student_info(request):
     stu = student.objects.get(user=request.user)
@@ -80,20 +99,35 @@ def student_form(request):
         return redirect("Moddle:student_info")
     context = {'form': form}
     return render(request, 'student_form.html',context)
-    '''
-def form_name_view(request):
-    form = forms.FormName()
+
+
+def change_password(request):
     if request.method == 'POST':
-        form = forms.FormName(request.POST)
+        form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
-            print("VALIDATION SUCCESS!")
-            print("NAME: " + form.cleaned_data['name'])
-            print("EMAIL: " + form.cleaned_data['email'])
-            print("TEXT: " + form.cleaned_data['text'])
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect_user_type(request)
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'change_password.html', {'form': form})
+#def form_name_view(request):
+    #form = forms.FormName()
+    #if request.method == 'POST':
+        #form = forms.FormName(request.POST)
+        #if form.is_valid():
+            #print("VALIDATION SUCCESS!")
+            #print("NAME: " + form.cleaned_data['name'])
+            #print("EMAIL: " + form.cleaned_data['email'])
+            #print("TEXT: " + form.cleaned_data['text'])
 
     #return render(request, 'form_page.html', {'form': form})
 	#context = {}
-	return render(request, 'student_info.html', context)'''
+	#return render(request, 'student_info.html', context)
+
 def search(request):
     q=request.GET['q']
     data = Course.objects.filter(name=q).order_by('name')
