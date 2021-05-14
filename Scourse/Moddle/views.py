@@ -63,5 +63,5 @@ def form_name_view(request):
 
 def search(request):
     q=request.GET['q']
-    data = Course.objects.filter(name=q).order_by('course_id')
+    data = Course.objects.filter(name=q).order_by('name')
     return render(request,'search.html',{'data':data})
