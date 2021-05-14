@@ -63,15 +63,12 @@ def register_teacher_form(request):
 
 	# Display a blank or invalid form.
 	context = {'form': form}
-<<<<<<< HEAD
 	return render(request, 'registration/register_teacher.html', context)
 
-=======
-	return render(request, 'registration/register.html', context)
 def info(request):
 	context = {}
 	return render(request, 'registration/info.html', context)
->>>>>>> 27018f97818af9ebc4d08d02bdba746b0fdc5bc6
+
 def exit(request):
 	logout(request)
 	return redirect('Moddle:logout')
