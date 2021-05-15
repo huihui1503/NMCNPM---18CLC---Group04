@@ -6,8 +6,10 @@
       <form action="{% url 'Moddle:teacher_form'%}" method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button class= "btn btn-primary"name="submit">Save changes</button>  &ensp; &ensp; <button class="btn btn-danger" onclick=location.href="{% url 'Moddle:teacher_info' %}">Cancel</button>
+        <button class= "btn btn-primary"name="submit">Save changes</button>
       </form>
+      <br>
+      <button class="btn btn-danger" onclick=location.href="{% url 'Moddle:teacher_info' %}">Cancel</button>
   </div>
 </div>
 {% endblock content %}
