@@ -4,7 +4,7 @@ from . import forms
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
-from .forms import LecturerForm, StudentForm
+from .forms import LecturerForm, StudentForm,UploadFileForm
 from .forms import *
 from Moddle.models import Notification,lecturer, student, Course
 
@@ -99,7 +99,16 @@ def student_form(request):
         return redirect("Moddle:student_info")
     context = {'form': form}
     return render(request, 'student_form.html',context)
-
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = ModelWithFileField(file_field=request.FILES['file'])
+            instance.save()
+            return HttpResponseRedirect('/success/url/')
+    else:
+        form = UploadFileForm()
+    return render(request, 'upload.html', {'form': form})
 
 def change_password(request):
     if request.method == 'POST':

@@ -69,7 +69,12 @@ class student(models.Model):
     def __str__(self):
         return self.user.username
 
-
+class Document(models.Model):
+    doc_id = models.CharField(max_length=15)
+    name = models.CharField(max_length=15)
+    lecturer_id = models.CharField(max_length=15)
+    course_id = models.CharField(max_length = 15)
+    doc = models.FileField()
 class DoHomeWork(models.Model):
     taken_date = models.DateTimeField(auto_now_add=True)
     homework = models.ForeignKey(HomeWork, on_delete=models.CASCADE)

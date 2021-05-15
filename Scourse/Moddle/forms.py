@@ -1,6 +1,6 @@
 from django import forms
 from django.core import validators
-from .models import lecturer
+from .models import lecturer,Document
 from django.forms.widgets import NumberInput
 class FormName(forms.Form):
     name = forms.CharField()
@@ -46,7 +46,15 @@ class StudentForm(forms.ModelForm):
     class Meta:
         model = student
         fields = ['first_name', 'last_name', 'dob', 'gender', 'address', 'phone', 'email', 'Organization']
-
+class UploadFileForm(forms.Form):
+    doc_id = forms.CharField(max_length=15)
+    name = forms.CharField(max_length=15)
+    lecturer_id = forms.CharField(max_length=15)
+    course_id = forms.CharField(max_length = 15)
+    doc = forms.FileField()
+    class Meta:
+        model = Document
+        fields = ['doc_id','name','lecturer_id','course_id','address','doc']
 class CourseForm(forms.ModelForm):
     name = forms.CharField(max_length=100)
     starting_time = forms.DateField()

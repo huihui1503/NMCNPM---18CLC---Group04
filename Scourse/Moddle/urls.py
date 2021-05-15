@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^redirect_user_type/$',views.redirect_user_type, name='redirect_user_type'),
     url(r'^teacher/$',views.teacher, name='teacher'),
+    url(r'^teacher/upload$',views.upload_file, name='upload_file'),
     url(r'^logout/$',views.logout, name='logout'),
     url(r'^student/$',views.Student, name='student'),
     url(r'^teacher/help_page$',views.help_page, name='help_page'),
