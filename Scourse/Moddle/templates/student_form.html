@@ -2,10 +2,19 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-<form action="{% url 'Moddle:student_form'%}" method = 'POST'> {%csrf_token%}
-  {{form|crispy}}
-    <input id="edit-info" type='submit' value='Save'/>
-</form>
-<button class="button" id="edit-info" onclick=location.href="{% url 'Moddle:student_info' %}">Back</button>
+<div class= "container">
+  <div class="jumbotron">
+    <form action="{% url 'Moddle:student_form'%}" method = 'POST'> {%csrf_token%}
+      {{form|crispy}}
+        <br>
+        <button name="submit" class="btn btn-primary" >Save</button>
+    </form>
+    <br>
+     <button class="btn btn-danger" onclick=location.href="{% url 'Moddle:student_info' %}">Cancel</button>
+  </div>
+</div>
+
+
+
 
 {% endblock content %}

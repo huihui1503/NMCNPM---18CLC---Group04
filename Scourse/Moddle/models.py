@@ -25,6 +25,7 @@ class lecturer(models.Model):
 
 
 class Course(models.Model):
+    course_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     date_added = models.DateTimeField(auto_now_add=True)
     starting_time = models.DateField(null=True)
@@ -63,7 +64,7 @@ class student(models.Model):
     email = models.EmailField()
     Organization = models.CharField(max_length=200)
     Homework = models.ManyToManyField(HomeWork, through='DoHomeWork')
-    Registered_Courses = models.ManyToManyField(Course)
+    #Registered_Courses = models.ManyToManyField(Cours')
 
 
     def __str__(self):

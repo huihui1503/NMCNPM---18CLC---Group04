@@ -31,47 +31,59 @@ def help_page(request):
     my_dict = {'name': 'Group 04', 'email': 'xuanloc2018@gmail.com'}
     return render(request, 'error.html', context=my_dict)
 
+
 def Student(request):
     return render(request, 'student.html')
 
+
 def course_home(request):
-    return render(request, 'course.html')
+    lec = lecturer.objects.get(user = request.user)
+    _courses = Course.objects.filter(lecture_id=lec).order_by('date_added')
+    data = {'courses':_courses}
+    return render(request, 'course_home.html', context=data)
+
+def register_course(request):
+    _courses = Course.objects.all().order_by('date_added')
+    data = {'courses':_courses}
+    return render(request, 'register_course.html', context=data)
 
 def teacher(request):
-    return render(request, 'teacher.html')
+    return render(request, 'lecturer_home.html')
 
 def teacher_info(request):
     lec = lecturer.objects.get(user = request.user)
     init_data ={'user_id':lec.user,'first_name': lec.first_name,'last_name':lec.last_name,'dob':lec.dob,'gender':lec.gender,'address':lec.address,'email':lec.email,'Organization':lec.Organization}
     return render(request, 'teacher_info.html',init_data)
 
-def course_info(request):
-    _course = Course.objects.get(course_id=request.course_id)
+def course_info(request, course_id):
+    _course = Course.objects.get(course_id = course_id)
     _courseData = {'course_id': _course.course_id, 'course_name': _course.name, 'startDate': _course.starting_time, 'endDate': _course.ending_time, 'lectureName': _course.lecture_id.first_name + _course.lecture_id.last_name }
     return render(request, "course_info.html", context=_courseData)
 
 def edit_course(request, course_id):
-    _course = Course.objects.get(course_id = request.course_id)
+    _course = Course.objects.get(course_id = course_id)
     if request.method != 'POST':
         form =  CourseForm(instance=_course)
     else:
         form =  CourseForm(instance=_course, data=request.POST)
         if form.is_valid():
             form.save()
-    context = {'form': form}
-    return render(request, 'editcourse_form.html', context)
+            redirect('course_info.html')
+
+    data= {'form': form, 'course_id': course_id}
+    return render(request, 'editcourse_form.html', context=data)
 
 def new_course(request):
     if request.method != 'POST':
         form =  CourseForm()
     else:
-        form =  CourseForm(data=request.POST)
+        lec = lecturer.objects.get(user = request.user)
+        form = CourseForm(data=request.POST)
         if form.is_valid():
             new_course = form.save(commit=False)
-            new_course.owner = request.user
-            new_course.lecture_id = request.user_id
+            new_course.lecture_id = lec
             form.save()
-            return redirect('Moddle:course_info')
+            return redirect('Moddle:course_home')
     context = {'form': form}
     return render(request, 'new_course.html', context)
 
@@ -80,7 +92,7 @@ def teacher_form(request):
     form = LecturerForm(request.POST or None,instance = lec)
     if form.is_valid():
         form.save()
-        return redirect("Moddle:teacher_info")
+        return redirect('Moddle:teacher_info')
     context = {'form': form}
     return render(request, 'teacher_form.html', context)
 

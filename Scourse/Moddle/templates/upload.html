@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<form action="{% url 'Moddle:upload_file'%}" method="post">
+<div class= "container">
+  <div class="jumbotron">
+      <form action="{% url 'Moddle:upload_file'%}" method="post">
   {% csrf_token %}
   {{form.as_p}}
-  <button name="submit">Save changes</button>
-</form>
-  <button class="button" id="edit-info" onclick=location.href="{% url 'Moddle:teacher' %}">Back</button>
+  <button class="btn btn-primary" name="submit">Save changes</button>
+	</form>
+      <br>
+      <button class="btn btn-danger" onclick=location.href="{% url 'Moddle:teacher' %}">Cancel</button>
+  </div>
+</div>
 {% endblock content %}

@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Custom css-->
 	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="{% static 'css/navbarcss.css'%}">
 	<link rel="stylesheet" href="{% static 'css/style_button.css'%}">
@@ -30,12 +31,6 @@
 		aria-expanded="false" aria-lable="Toggle navigation">
 		<span class="navbar-toggler-icon"></span></button>
 		<div class="collapse navbar-collapse" id="collapsibleNavId">
-			<form class="Tim kiem" id = "navbarNAV" action ="search">
-				<div class="input-group">
-					<input name = "q" type="text" class="form-control" placeholder="search"/>
-					<button class="btn btn-dark" type="Search" id="button-addon2">Search</button>
-				</div>
-			</form>
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					{% if user.is_authenticated %}
 						<li class="navbar-item">
