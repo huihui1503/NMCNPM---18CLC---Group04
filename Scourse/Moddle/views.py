@@ -42,6 +42,10 @@ def course_home(request):
     data = {'courses':_courses}
     return render(request, 'course_home.html', context=data)
 
+def register_course(request):
+    _courses = Course.objects.all().order_by('date_added')
+    data = {'courses':_courses}
+    return render(request, 'register_course.html', context=data)
 
 def teacher(request):
     return render(request, 'lecturer_home.html')

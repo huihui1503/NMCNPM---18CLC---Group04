@@ -15,15 +15,17 @@ urlpatterns = [
 
     url(r'^teacher/help_page$',views.help_page, name='help_page'),
     url(r'^teacher/course_home/$',views.course_home, name='course_home'),
+    url(r'student/register_course', views.register_course, name='register_course'),
 
     path('teacher/course_home/course_info/<int:course_id>', views.course_info, name='course_info'),
+    path('student/course/<int:course_id>', views.course_info, name='course_info'),
     path('teacher/course_home/course_info/<int:course_id>/edit_course', views.edit_course, name='edit_course'),
     url(r'^teacher/course_home/new_course/$',views.new_course, name='new_course'),
     url(r'^teacher/info/$',views.teacher_info, name='teacher_info'),
     url(r'^teacher/info/form/$',views.teacher_form, name='teacher_form'),
     url(r'^student/info/$', views.student_info, name='student_info'),
     url(r'^student/info/form$',views.student_form, name='student_form'),
-    url(r'^search',views.search,name='search'),
+    url(r'^student/search',views.search,name='search'),
     url(r'^redirect_user_type/search',views.search),
     url(r'^student/info/search',views.search),
     url(r'^password/$', views.change_password, name='change_password'),

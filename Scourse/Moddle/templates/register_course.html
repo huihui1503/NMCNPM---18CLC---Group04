@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<form class="example" id = "navbarNAV" action ="search">
+        <div class="input-group">
+            <input name = "q" type="text" class="form-control" placeholder="search"/>
+             <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+</form>
+   <h4 class="card-title">Courses</h4>
+    {% for course in courses %}
+                <div class="card" id="each-course">
+                    <div class="card-body">
+
+                        <h5 class="card-title" id="course-name"><i class="fa fa-book"></i><a href="{% url 'Moddle:course_info' course.course_id %}" id="link-course">{{course.name}}</a></h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">Teacher: {{course.lecture_id}}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    	{% empty %}
+			<li><h3>No courses have been added yet.</h3></li>
+    {% endfor %}
+{% endblock content %}
