@@ -12,11 +12,10 @@ urlpatterns = [
     url(r'^teacher/$',views.teacher, name='teacher'),
     url(r'^logout/$',views.logout, name='logout'),
     url(r'^student/$',views.Student, name='student'),
-
     url(r'^teacher/help_page$',views.help_page, name='help_page'),
     url(r'^teacher/course_home/$',views.course_home, name='course_home'),
     url(r'student/register_course', views.register_course, name='register_course'),
-
+    url(r'^password/$', views.change_password, name='change_password'),
     path('teacher/course_home/course_info/<int:course_id>', views.course_info, name='course_info'),
     path('student/course/<int:course_id>', views.course_info, name='course_info'),
     path('teacher/course_home/course_info/<int:course_id>/edit_course', views.edit_course, name='edit_course'),
@@ -28,5 +27,4 @@ urlpatterns = [
     url(r'^student/search',views.search,name='search'),
     url(r'^redirect_user_type/search',views.search),
     url(r'^student/info/search',views.search),
-    url(r'^password/$', views.change_password, name='change_password'),
 ]

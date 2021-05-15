@@ -68,9 +68,10 @@ def edit_course(request, course_id):
         form =  CourseForm(instance=_course, data=request.POST)
         if form.is_valid():
             form.save()
+            redirect('course_info.html')
 
-    context = {'form': form}
-    return render(request, 'editcourse_form.html', context)
+    data= {'form': form, 'course_id': course_id}
+    return render(request, 'editcourse_form.html', context=data)
 
 def new_course(request):
     if request.method != 'POST':
